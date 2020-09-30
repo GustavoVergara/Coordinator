@@ -1,0 +1,23 @@
+name: Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: macos-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+        
+      - name: Switch to Xcode 11.3.1
+        run: sudo xcode-select --switch /Applications/Xcode_11.3.1.app
+
+      - name: Generate .xcodeproj
+        run: swift package generate-xcodeproj
+        
+      - name: Run tests
+        run: xcodebuild test -scheme Coordinator-Package -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.3'
