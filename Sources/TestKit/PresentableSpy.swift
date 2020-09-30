@@ -2,7 +2,6 @@
 //  Created by Gustavo Vergara Garcia on 26/08/20.
 //
 
-import UIKit
 import Coordinator
 
 public class PresentableSpy: Presentable {
@@ -10,9 +9,9 @@ public class PresentableSpy: Presentable {
 
     public var invokedAsViewController = false
     public var invokedAsViewControllerCount = 0
-    public var stubbedAsViewControllerResult: UIViewController!
+    public var stubbedAsViewControllerResult: ViewController!
 
-    public func asViewController() -> UIViewController {
+    public func asViewController() -> ViewController {
         invokedAsViewController = true
         invokedAsViewControllerCount += 1
         return stubbedAsViewControllerResult

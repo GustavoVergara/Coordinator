@@ -2,11 +2,9 @@
 //  Created by Gustavo Vergara Garcia on 17/08/20.
 //
 
-import UIKit
-
 // MARK: - Protocol
 public protocol Presentable: class {
-    func asViewController() -> UIViewController
+    func asViewController() -> ViewController
 
     func present(_ presentable: Presentable, animated: Bool, completion: (() -> Void)?)
     func dismiss(animated: Bool, completion: (() -> Void)?)
@@ -14,13 +12,13 @@ public protocol Presentable: class {
 
 // MARK: - Implementation
 public class PresentableController: Presentable {
-    let viewController: UIViewController
+    let viewController: ViewController
 
-    public init(_ viewController: UIViewController) {
+    public init(_ viewController: ViewController) {
         self.viewController = viewController
     }
 
-    public func asViewController() -> UIViewController { self.viewController }
+    public func asViewController() -> ViewController { self.viewController }
 
     public func present(_ presentable: Presentable, animated: Bool, completion: (() -> Void)?) {
         self.viewController.present(presentable.asViewController(), animated: animated, completion: completion)
@@ -32,6 +30,6 @@ public class PresentableController: Presentable {
 }
 
 // MARK: - Extensions
-public extension UIViewController {
+public extension ViewController {
     func eraseToPresentable() -> Presentable { PresentableController(self) }
 }

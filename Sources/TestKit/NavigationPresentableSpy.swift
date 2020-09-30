@@ -2,7 +2,6 @@
 //  Created by Gustavo Vergara Garcia on 26/08/20.
 //
 
-import UIKit
 import Coordinator
 
 public class NavigationPresentableSpy: NavigationPresentable {
@@ -52,9 +51,9 @@ public class NavigationPresentableSpy: NavigationPresentable {
 
     public var invokedAsNavigationController = false
     public var invokedAsNavigationControllerCount = 0
-    public var stubbedAsNavigationControllerResult: UINavigationController!
+    public var stubbedAsNavigationControllerResult: NavigationController!
 
-    public func asNavigationController() -> UINavigationController {
+    public func asNavigationController() -> NavigationController {
         invokedAsNavigationController = true
         invokedAsNavigationControllerCount += 1
         return stubbedAsNavigationControllerResult
@@ -128,9 +127,9 @@ public class NavigationPresentableSpy: NavigationPresentable {
 
     public var invokedAsViewController = false
     public var invokedAsViewControllerCount = 0
-    public var stubbedAsViewControllerResult: UIViewController!
+    public var stubbedAsViewControllerResult: ViewController!
 
-    public func asViewController() -> UIViewController {
+    public func asViewController() -> ViewController {
         invokedAsViewController = true
         invokedAsViewControllerCount += 1
         return stubbedAsViewControllerResult

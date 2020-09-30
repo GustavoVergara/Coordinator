@@ -2,7 +2,6 @@
 //  Created by Gustavo Vergara Garcia on 01/09/20.
 //
 
-import UIKit
 import Coordinator
 
 public class FakeNavigationPresentable: NavigationPresentable {
@@ -47,11 +46,11 @@ public class FakeNavigationPresentable: NavigationPresentable {
         self.presentables = presentables
     }
     
-    public func asNavigationController() -> UINavigationController {
+    public func asNavigationController() -> NavigationController {
         fatalError("Dummy implementation")
     }
     
-    public func asViewController() -> UIViewController {
+    public func asViewController() -> ViewController {
         fatalError("Dummy implementation")
     }
 

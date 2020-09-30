@@ -2,11 +2,9 @@
 //  Created by Gustavo Vergara Garcia on 17/08/20.
 //
 
-import UIKit
-
 // MARK: - Protocol
 public protocol NavigationPresentable: Presentable {
-    func asNavigationController() -> UINavigationController
+    func asNavigationController() -> NavigationController
     
     func pushPresentable(_ presentable: Presentable, animated: Bool)
     
@@ -27,15 +25,15 @@ public protocol NavigationPresentable: Presentable {
 
 // MARK: - Implementation
 public class NavigationPresentableController: NavigationPresentable {
-    let navigationController: UINavigationController
+    let navigationController: NavigationController
 
-    public init(_ navigationController: UINavigationController) {
+    public init(_ navigationController: NavigationController) {
         self.navigationController = navigationController
     }
     
     // MARK: Presentable
 
-    public func asViewController() -> UIViewController { self.navigationController }
+    public func asViewController() -> ViewController { self.navigationController }
 
     public func present(_ presentable: Presentable, animated: Bool, completion: (() -> Void)?) {
         self.navigationController.present(presentable.asViewController(), animated: animated, completion: completion)
@@ -47,7 +45,7 @@ public class NavigationPresentableController: NavigationPresentable {
     
     // MARK: Navigation Presentable
     
-    public func asNavigationController() -> UINavigationController { self.navigationController }
+    public func asNavigationController() -> NavigationController { self.navigationController }
     
     public func pushPresentable(_ presentable: Presentable, animated: Bool) {
         self.navigationController
@@ -97,6 +95,6 @@ public class NavigationPresentableController: NavigationPresentable {
 }
 
 // MARK: - Extensions
-public extension UINavigationController {
+public extension NavigationController {
     func eraseToNavigationPresentable() -> NavigationPresentable { NavigationPresentableController(self) }
 }
