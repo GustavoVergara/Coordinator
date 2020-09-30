@@ -9,15 +9,27 @@ on:
 jobs:
   test:
     runs-on: macos-latest
-    
+
     steps:
       - uses: actions/checkout@v2
-        
+
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
       - name: Switch to Xcode 11.3.1
         run: sudo xcode-select --switch /Applications/Xcode_11.3.1.app
 
       - name: Generate .xcodeproj
         run: swift package generate-xcodeproj
-        
+
       - name: Run tests
-        run: xcodebuild test -scheme Coordinator-Package -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.3'
+        run: xcodebuild test -scheme Coordinator-Package -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.3' | bundle exec xcpretty -r html --output .build/reports/tests.html
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: test-report
+          path: .build/reports/tests.html
