@@ -3,6 +3,6 @@
 //
 
 public protocol Coordinator {
-    func present(animated: Bool)
+    func start(animated: Bool)
     func dismiss(animated: Bool)
 }
