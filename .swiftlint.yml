@@ -1,0 +1,21 @@
+opt_in_rules:
+  - convenience_type
+  - empty_collection_literal
+  - empty_count
+  - empty_string
+  - empty_xctest_method
+  - first_where
+  - modifier_order
+  - private_action
+  - private_outlet
+
+trailing_comma:
+  mandatory_comma: true
+
+trailing_whitespace:
+  ignores_empty_lines: true
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Package.swift
+  - '*.generated.swift'
+  - /Sources/TestKit/

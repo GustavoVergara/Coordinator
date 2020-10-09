@@ -43,7 +43,6 @@ final class RouterTests: XCTestCase {
         )
     }
 
-
     static var allTests = [
         ("test_presentExtension_servesAsProxy", test_presentExtension_servesAsProxy),
         ("test_dismissExtension_servesAsProxy", test_dismissExtension_servesAsProxy),

@@ -90,10 +90,4 @@ final class NavigationRouterTests: XCTestCase {
             self.fakeNavigationPresentable.presentables.isEmpty
         )
     }
-    
-    static var allTests = [
-        ("test_present_pushesThePresentableOntoTheNavigation", test_present_pushesThePresentableOntoTheNavigation),
-        ("test_dismiss_popsToInitialPresentable_whenInitialPresentableExistsOnFirstPresent", test_dismiss_popsToInitialPresentable_whenInitialPresentableExistsOnFirstPresent),
-        ("test_dismiss_setsPresentablesToEmpty_whenNavigationHasNoPresentablesOnFirstPresent", test_dismiss_setsPresentablesToEmpty_whenNavigationHasNoPresentablesOnFirstPresent),
-    ]
 }
